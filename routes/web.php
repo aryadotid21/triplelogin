@@ -63,29 +63,6 @@ Route::group(['middleware'  => ['auth','technician']], function(){
     Route::get('technician/dashboard', function(){
     return view('/technician/dashboard');
     });
-
-    Route::get('admin/user', function(){
-    return view('admin/user',['user' => user::orderBy('created_at', 'desc')->get()]);
-    });
-
-    Route::get('admin/question', function(){
-        return view('admin/question',['user' => question::orderBy('created_at', 'desc')->get()]);
-        });
-
-    Route::get('/admin', function(){
-        return redirect('admin/dashboard');
-    });
-
-    Route::get('admin/order/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete_order']);
-    Route::get('admin/user/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete_user']);
-    Route::get('admin/question/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete_question']);
-
-    Route::get('admin/order/edit/{id}',[App\Http\Controllers\HomeController::class, 'edit_order']);
-    Route::get('admin/order/edit/{id}/update',[App\Http\Controllers\HomeController::class, 'update_order']);
-    Route::get('admin/user/edit/{id}',[App\Http\Controllers\HomeController::class, 'edit_user']);
-    Route::get('admin/user/edit/{id}/update',[App\Http\Controllers\HomeController::class, 'update_user']);
-
-
 });
 
 
