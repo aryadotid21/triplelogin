@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -28,7 +27,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-    
+
     <div id="app">
         <span class="position-absolute trigger">
             <!-- hidden trigger to apply 'stuck' styles -->
@@ -44,7 +43,7 @@
 
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
@@ -66,49 +65,50 @@
             </div>
         </nav>
         <main class="py-0" id="main">
-        <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a><img class="img-responsive" src="{{ asset('img/batman.png') }}" alt="Profile Image" style="width:60%;margin-left:7%;margin-top:7%"/></a>
-  <hr style="border-top: 1px solid rgba(255, 255, 255, 0.5);">
-  <a href="./dashboard"><i class="fa fa-fw fa-shopping-cart"></i> Order</a>
-  <a href="./user"><i class="fa fa-fw fa-user"></i> User</a>
-  <a href="./question"><i class="fa fa-fw fa-coffee"></i> Suggestion</a>
-</div>
-        <div class="container" onclick="closeNav()" >
-        <h1 style="text-align:center;padding-top:2%">User List</h1>
-        @include('flash-message')
-            <div class="table-responsive">
-                <table class="table">
-                    <tr>
-                        <th style="text-align:center">No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>User Type</th>
-                        <th>Option</th>
-                    </tr>
-                    @foreach($user as $index => $data)
-                    <tr>
-                        <td style="text-align:center">{{$index +1}}</td>
-                        <td>{{$data -> name}}</td>
-                        <td>{{$data -> email}}</td>
-                        <td>{{$data -> phone}}</td>
-                        <td>
-                        @if (empty($data->usertype))
-                        user
-                        @else
-                        {{$data -> usertype}}
-                        @endif
-                        </td>
-                        <td>
-                        <a href="./user/edit/{{$data -> id}}"><button type="button" class="btn btn-warning">Edit</button></a>
-                        <a href="./user/delete/{{$data -> id}}"><button type="button" class="btn btn-danger">Delete</button></a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a><img class="img-responsive" src="{{ asset('img/batman.png') }}" alt="Profile Image" style="width:60%;margin-left:7%;margin-top:7%" /></a>
+                <hr style="border-top: 1px solid rgba(255, 255, 255, 0.5);">
+                <a href="./dashboard"><i class="fa fa-fw fa-shopping-cart"></i> Order</a>
+                <a href="./user"><i class="fa fa-fw fa-user"></i> User</a>
+                <a href="./question"><i class="fa fa-fw fa-coffee"></i> Suggestion</a>
             </div>
-</div>
-</main>
+            <div class="container" onclick="closeNav()">
+                <h1 style="text-align:center;padding-top:2%">User List</h1>
+                @include('flash-message')
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th style="text-align:center">No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>User Type</th>
+                            <th>Option</th>
+                        </tr>
+                        @foreach($user as $index => $data)
+                        <tr>
+                            <td style="text-align:center">{{$index +1}}</td>
+                            <td>{{$data -> name}}</td>
+                            <td>{{$data -> email}}</td>
+                            <td>{{$data -> phone}}</td>
+                            <td>
+                                @if (empty($data->usertype))
+                                user
+                                @else
+                                {{$data -> usertype}}
+                                @endif
+                            </td>
+                            <td>
+                                <a href="./user/edit/{{$data -> id}}"><button type="button" class="btn btn-warning">Edit</button></a>
+                                <a href="./user/delete/{{$data -> id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+        </main>
 </body>
+
 </html>

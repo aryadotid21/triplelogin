@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -21,7 +20,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -157,11 +156,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputState">Email</label>
-                                <input name="email" type="email" class="form-control" id="inputState" value="" >
+                                <input name="email" type="email" class="form-control" id="inputState" value="">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputZip">Phone Number</label>
-                                <input name="phone" type="text" class="form-control" id="inputZip" value="" >
+                                <input name="phone" type="text" class="form-control" id="inputZip" value="">
                             </div>
                         </div>
 
@@ -172,7 +171,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                        <button type="submit" class="btn btn-grad btn-lg">Ask Us</button>
+                            <button type="submit" class="btn btn-grad btn-lg">Ask Us</button>
                         </div>
                 </div>
             </div>
@@ -209,17 +208,15 @@
 </body>
 
 <script>
+(new IntersectionObserver(function(e, o) {
+    if (e[0].intersectionRatio > 0) {
+        document.documentElement.removeAttribute('class');
+    } else {
+        document.documentElement.setAttribute('class', 'stuck');
+    };
+})).observe(document.querySelector('.trigger'));
 
-    (new IntersectionObserver(function (e, o) {
-        if (e[0].intersectionRatio > 0) {
-            document.documentElement.removeAttribute('class');
-        } else {
-            document.documentElement.setAttribute('class', 'stuck');
-        };
-    })).observe(document.querySelector('.trigger'));
-
-    AOS.init();
-
+AOS.init();
 </script>
 
 </html>

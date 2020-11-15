@@ -118,11 +118,11 @@
             <img class="img-responsive" src="{{ asset('img/cover3.jpg') }}" alt="header image" style="width:100%;background-color:#3a4664" />
             <div class="jumbotron" style="background-color:#3a4664;padding-bottom:5%">
                 <div class="header" style="background-color:#3a4664" data-aos="fade-up" data-aos-duration="1000">
-                <p>@include('flash-message')</p>
+                    <p>@include('flash-message')</p>
                     <h1 style="color:whitesmoke">Jakarta Laptop Rent</h1>
                     <p style="color:whitesmoke">Jakarta laptop rental is a company that provides laptop rentals for the Jakarta area, especially North Jakarta, East Jakarta, West Jakarta, South Jakarta, and Central Jakarta</p>
                     <p class="lead">
-                    <a class="btn btn-grad btn-lg" href="#order" role="button">Order Now</a>
+                        <a class="btn btn-grad btn-lg" href="#order" role="button">Order Now</a>
                     </p>
                 </div>
             </div>
@@ -227,17 +227,16 @@
                             </div>
 
                             <script>
-                                function notEmpty() {
-                                    var e = document.getElementById("laptop");
-                                    var strUser = e.options[e.selectedIndex].value;
-                                    var strLaptop = e.options[e.selectedIndex].getAttribute('nama');
-                                    document.getElementById('greet').innerHTML = strUser;
-                                    document.getElementById('harga').value = strUser;
-                                    document.getElementById('namalaptop').value = strLaptop;
-                                }
-                                notEmpty()
-                                document.getElementById("laptop").onchange = notEmpty;
-
+                            function notEmpty() {
+                                var e = document.getElementById("laptop");
+                                var strUser = e.options[e.selectedIndex].value;
+                                var strLaptop = e.options[e.selectedIndex].getAttribute('nama');
+                                document.getElementById('greet').innerHTML = strUser;
+                                document.getElementById('harga').value = strUser;
+                                document.getElementById('namalaptop').value = strLaptop;
+                            }
+                            notEmpty()
+                            document.getElementById("laptop").onchange = notEmpty;
                             </script>
                         </div>
                         <div class="form-row">
@@ -252,13 +251,12 @@
                         </div>
 
                         <script type="text/javascript">
-                            function calculate(price) {
-                                var price = document.getElementById("harga").value;
-                                var duration = document.getElementById("durasi").value;
-                                var result = parseInt(price * duration);
-                                document.getElementById("totprice").value = result;
-                            }
-
+                        function calculate(price) {
+                            var price = document.getElementById("harga").value;
+                            var duration = document.getElementById("durasi").value;
+                            var result = parseInt(price * duration);
+                            document.getElementById("totprice").value = result;
+                        }
                         </script>
                         <div class="form-group row">
                             <div class="form-group col-md-12">
@@ -302,16 +300,15 @@
 </body>
 
 <script>
-    (new IntersectionObserver(function (e, o) {
-        if (e[0].intersectionRatio > 0) {
-            document.documentElement.removeAttribute('class');
-        } else {
-            document.documentElement.setAttribute('class', 'stuck');
-        };
-    })).observe(document.querySelector('.trigger'));
+(new IntersectionObserver(function(e, o) {
+    if (e[0].intersectionRatio > 0) {
+        document.documentElement.removeAttribute('class');
+    } else {
+        document.documentElement.setAttribute('class', 'stuck');
+    };
+})).observe(document.querySelector('.trigger'));
 
-    AOS.init();
-
+AOS.init();
 </script>
 
 </html>
