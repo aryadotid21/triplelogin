@@ -140,6 +140,9 @@
                     </div>
                 </div>
             </div>
+            @guest
+            @if (Route::has('login'))
+
             <div class="d-flex justify-content-center" style="padding-top:4rem;padding-bottom:4rem">
                 <div class="jumbotron" style="background-color:white;max-width:800px;border-radius:25px" data-aos="fade-up" data-aos-duration="2500">
                     <h1 style="text-align:center">Got a Question?</h1>
@@ -176,6 +179,164 @@
                 </div>
             </div>
             </form>
+
+            @endif
+
+            @if (Route::has('register'))
+
+            <div class="d-flex justify-content-center" style="padding-top:4rem;padding-bottom:4rem">
+                <div class="jumbotron" style="background-color:white;max-width:800px;border-radius:25px" data-aos="fade-up" data-aos-duration="2500">
+                    <h1 style="text-align:center">Got a Question?</h1>
+                    <form method="POST" action="/question" id="question">
+                        @csrf
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputCity">Name</label>
+                                <input name="name" type="text" class="form-control" id="inputCity" value="">
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Email</label>
+                                <input name="email" type="email" class="form-control" id="inputState" value="">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputZip">Phone Number</label>
+                                <input name="phone" type="text" class="form-control" id="inputZip" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputAddress">Subject</label>
+                                <textarea name="subject" type="text" class="form-control" id="inputSubject" style="height:200px"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-grad btn-lg">Ask Us</button>
+                        </div>
+                </div>
+            </div>
+            </form>
+
+            @endif
+            @else
+            <div class="d-flex justify-content-center" style="padding-top:4rem;padding-bottom:4rem">
+                <div class="jumbotron" style="background-color:white;max-width:800px;border-radius:25px" data-aos="fade-up" data-aos-duration="2500">
+                    <h1 style="text-align:center">Order Now</h1>
+                    <form method="POST" action="/order" id="order">
+                        @csrf
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputCity">Name</label>
+                                <input name="name" type="text" class="form-control" id="inputCity" value="{{ Auth::user()->name }}" readonly>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Email</label>
+                                <input name="email" type="email" class="form-control" id="inputState" value="{{ Auth::user()->email }}" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputZip">Phone Number</label>
+                                <input name="phone" type="text" class="form-control" id="inputZip" value="{{ Auth::user()->phone }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="inputState">City</label>
+                                <select name="city" id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>Central Jakarta</option>
+                                    <option>East Jakarta</option>
+                                    <option>North Jakarta</option>
+                                    <option>South Jakarta</option>
+                                    <option>West Jakarta</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputZip">Zip Code</label>
+                                <input name="zip" type="text" class="form-control" id="inputZip">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputAddress">Full Address</label>
+                                <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="inputState">Laptop</label>
+                                <select id="laptop" name="laptop" onclick="calculate()" class="form-control">
+
+                                    @foreach ($laptop->unique('name') as $laptops)
+                                    @if ($laptops->status == "Not Ready")
+                                    @continue
+                                    @endif
+                                    <option nama="{{$laptops->name}}" value="{{$laptops->price}}">{{$laptops->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="harga">Price For 1 Day</label>
+                                <div style="display:none" id="greet"></div>
+                                <input style="display:none" type="text" name="laptopname" id="namalaptop" value=""></input>
+                                <input type="text" class="form-control" name="dayprice" id="harga" readonly="readonly" value=""></input>
+                            </div>
+
+                            <script>
+                            function notEmpty() {
+                                var e = document.getElementById("laptop");
+                                var strUser = e.options[e.selectedIndex].value;
+                                var strLaptop = e.options[e.selectedIndex].getAttribute('nama');
+                                document.getElementById('greet').innerHTML = strUser;
+                                document.getElementById('harga').value = strUser;
+                                document.getElementById('namalaptop').value = strLaptop;
+                            }
+                            notEmpty()
+                            document.getElementById("laptop").onchange = notEmpty;
+                            </script>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="durasi">Duration (1.. 2.. 3..) Day</label>
+                                <input name="duration" type="number" class="form-control" id="durasi" onkeyup="calculate()" placeholder="Duration..">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="totprice">Total Price</label>
+                                <input name="totprice" type="text" class="form-control" id="totprice" readonly>
+                            </div>
+                        </div>
+
+                        <script type="text/javascript">
+                        function calculate(price) {
+                            var price = document.getElementById("harga").value;
+                            var duration = document.getElementById("durasi").value;
+                            var result = parseInt(price * duration);
+                            document.getElementById("totprice").value = result;
+                        }
+                        </script>
+                        <div class="form-group row">
+                            <div class="form-group col-md-12">
+                                <label for="example-date-input">Pickup Date</label>
+                                <input name="pickupdate" class="form-control" type="date" value="" id="example-datetime-local-input">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-grad btn-lg">Order Now</button>
+                </div>
+            </div>
+            </form>
+
+            @endguest
             <div class="jumbotron" style="background-color:white;padding-top:4rem;padding-bottom:4rem" id="location">
                 <h1 style="text-align:center;margin-bottom:2%;" data-aos="fade-up" data-aos-duration="2000">Find Us On Google Maps</h1>
                 <div class="container-fluid" data-aos="fade-up" data-aos-duration="2000">

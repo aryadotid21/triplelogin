@@ -19,11 +19,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
     <div id="app">
         <span class="position-absolute trigger">
             <!-- hidden trigger to apply 'stuck' styles -->
@@ -31,7 +35,7 @@
         <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-custom ">
             <div class="container">
                 <a class="navbar-brand" href="#" onclick="openNav()">Admin Panel</a>
-                <a id="navbar-brand-mobile" class="navbar-brand" style="display:none" href="#">JLR</a>
+                <a id="navbar-brand-mobile " class="navbar-brand" style="display:none" href="#">JLR</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -65,71 +69,36 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a><img class="img-responsive" src="{{ asset('img/batman.png') }}" alt="Profile Image" style="width:60%;margin-left:7%;margin-top:7%" /></a>
                 <hr style="border-top: 1px solid rgba(255, 255, 255, 0.5);">
-                <a href="./dashboard"><i class="fa fa-fw fa-home"></i> Order</a>
+                <a href="./dashboard"><i class="fa fa-fw fa-shopping-cart"></i> Order</a>
                 <a href="./user"><i class="fa fa-fw fa-user"></i> User</a>
                 <a href="./question"><i class="fa fa-fw fa-coffee"></i> Suggestion</a>
                 <a href="./laptop"><i class="fa fa-fw fa-laptop"></i> Laptop</a>
             </div>
             <div class="container" onclick="closeNav()">
-                <h1 style="text-align:center;padding-top:2%">Order List</h1>
+                <h1 style="text-align:center;padding-top:2%">Laptop List</h1>
                 @include('flash-message')
                 <div class="table-responsive">
                     <table class="table">
                         <tr>
                             <th style="text-align:center">No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>City</th>
-                            <th>Zip</th>
-                            <th>Address</th>
+                            <th>ID Laptop</th>
                             <th>Laptop Name</th>
-                            <th>1 Day Price</th>
-                            <th>Duration</th>
-                            <th>Total price</th>
-                            <th>Pickup Date</th>
+                            <th>Price</th>
                             <th>Status</th>
-                            <th style="text-align:center;">Option</th>
+                            <th>Note</th>
+                            <th>Option</th>
                         </tr>
-                        @foreach($order as $index => $data)
+                        @foreach($user as $index => $data)
                         <tr>
                             <td style="text-align:center">{{$index +1}}</td>
+                            <td>{{$data -> id}}</td>
                             <td>{{$data -> name}}</td>
+                            <td>{{$data -> price}}</td>
+                            <td>{{$data -> status}}</td>
+                            <td>{{$data -> note}}</td>
                             <td>
-                                <a href="mailto:{{$data -> email}}?subject=Confirmation - Rental Laptop Jakarta&body=
-Dear {{$data -> name}},%0D%0A
-Thank you for rent a laptop from Rental Laptop Jakarta%0D%0A
-Your Order Details is %0D%0A%0D%0A%0D%0A
-Email : {{$data -> email}} %0D%0A
-Phone Number : {{$data -> phone}} %0D%0A
-City : {{$data -> city}} %0D%0A
-Zip : {{$data -> zip}} %0D%0A
-Address : {{$data -> address}}  %0D%0A
-Laptop Name : {{$data -> laptop}}  %0D%0A
-Price per Day : RP. {{$data -> dayprice}}  %0D%0A
-Duration : {{$data -> duration}}  Day %0D%0A
-Total Price : RP. {{$data -> totprice}}  %0D%0A
-Pickup Date : {{$data -> pickupdate}}  %0D%0A%0D%0A
-You Can Take Your Order From Our Office In {{$data -> city}} At Working Hours ( 8.00AM - 19.00PM ) And Don't Forget To Bring Your Identity Card %0D%0A%0D%0A%0D%0A%0D%0A
-Regards, Rental Laptop Jakarta">{{$data -> email}}</a>
-                            </td>
-                            <td>{{$data -> phone}}</td>
-                            <td>{{$data -> city}}</td>
-                            <td>{{$data -> zip}}</td>
-                            <td>{{$data -> address}}</td>
-                            <td>{{$data -> laptop}}</td>
-                            <td>{{$data -> dayprice}}</td>
-                            <td>{{$data -> duration}}</td>
-                            <td>{{$data -> totprice}}</td>
-                            <td>{{$data -> pickupdate}}</td>
-                            <td>@if (empty($data->status))
-                                Pending
-                                @else
-                                {{$data -> status}}
-                                @endif</td>
-                            <td style="text-align:center;">
-                                <a href="./order/edit/{{$data -> id}}"><button type="button" class="btn btn-warning">Edit</button>
-                                    <a href="./order/delete/{{$data -> id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                                <a href="./user/edit/{{$data -> id}}"><button type="button" class="btn btn-warning">Edit</button></a>
+                                <a href="./user/delete/{{$data -> id}}"><button type="button" class="btn btn-danger">Delete</button></a>
                             </td>
                         </tr>
                         @endforeach

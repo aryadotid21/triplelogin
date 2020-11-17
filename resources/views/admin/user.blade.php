@@ -72,6 +72,7 @@
                 <a href="./dashboard"><i class="fa fa-fw fa-shopping-cart"></i> Order</a>
                 <a href="./user"><i class="fa fa-fw fa-user"></i> User</a>
                 <a href="./question"><i class="fa fa-fw fa-coffee"></i> Suggestion</a>
+                <a href="./laptop"><i class="fa fa-fw fa-laptop"></i> Laptop</a>
             </div>
             <div class="container" onclick="closeNav()">
                 <h1 style="text-align:center;padding-top:2%">User List</h1>

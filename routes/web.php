@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\question;
 use App\Models\User;
+use App\Models\laptop;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -19,12 +20,13 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',['laptop' => laptop::orderBy('created_at', 'desc')->get()]);
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 
@@ -37,6 +39,10 @@ Route::group(['middleware'  => ['auth','admin']], function(){
     Route::get('admin/user', function(){
     return view('admin/user',['user' => user::orderBy('created_at', 'desc')->get()]);
     });
+
+    Route::get('admin/laptop', function(){
+        return view('admin/laptop',['user' => laptop::orderBy('id', 'asc')->get()]);
+        });
 
     Route::get('admin/question', function(){
         return view('admin/question',['user' => question::orderBy('created_at', 'desc')->get()]);

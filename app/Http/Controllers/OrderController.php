@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\laptop;
+use DB;
 
 class OrderController extends Controller
 {
@@ -23,8 +25,10 @@ class OrderController extends Controller
             'pickupdate' =>  $data['pickupdate'],
             'status' =>  "Pending",
         ]);
+        DB::table('laptop')->where('id',$data->id_laptop)->update([
+            'status' => $data['name']
+        ]);
         return back()->with('success','Order success, Admin will confirm your order and will send a notification email as soon as possible.');
-        
     }
 
     public function edit_order($id)

@@ -209,14 +209,18 @@
                         </div>
 
                         <div class="form-row">
+
                             <div class="form-group col-md-8">
                                 <label for="inputState">Laptop</label>
                                 <select id="laptop" name="laptop" onclick="calculate()" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option nama="Thinkpad X1 Carbon 14" value="135000">Thinkpad X1 Carbon 14"</option>
-                                    <option nama="Macbook Pro 13" value="150000">Macbook Pro 13"</option>
-                                    <option nama="Microsoft Surface Pro 7" value="100000">Microsoft Surface Pro 7 12"</option>
+                                @foreach ($laptop as $laptops)
+                                @if ($laptops->status == "Ready")
+                                <option id_laptop="{{$laptops->id}}" nama="{{$laptops->name}}" value="{{$laptops->price}}">{{$laptops->name}}</option>
+                                @endif
+                                    @continue
+                                @endforeach
                                 </select>
+                                <input name="id_laptop" type="hidden" id="id_laptop" value="">
                             </div>
 
                             <div class="form-group col-md-4">
@@ -231,9 +235,11 @@
                                 var e = document.getElementById("laptop");
                                 var strUser = e.options[e.selectedIndex].value;
                                 var strLaptop = e.options[e.selectedIndex].getAttribute('nama');
+                                var strLaptopId = e.options[e.selectedIndex].getAttribute('id_laptop');
                                 document.getElementById('greet').innerHTML = strUser;
                                 document.getElementById('harga').value = strUser;
                                 document.getElementById('namalaptop').value = strLaptop;
+                                document.getElementById('id_laptop').value = strLaptopId;
                             }
                             notEmpty()
                             document.getElementById("laptop").onchange = notEmpty;
