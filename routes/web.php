@@ -46,14 +46,17 @@ Route::group(['middleware'  => ['auth','admin']], function(){
         return redirect('admin/dashboard');
     });
 
-    Route::get('admin/order/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete_order']);
-    Route::get('admin/user/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete_user']);
-    Route::get('admin/question/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete_question']);
+    Route::get('admin/order/delete/{id}',[App\Http\Controllers\OrderController::class, 'delete_order']);
+    Route::get('admin/order/edit/{id}',[App\Http\Controllers\OrderController::class, 'edit_order']);
+    Route::get('admin/order/edit/{id}/update',[App\Http\Controllers\OrderController::class, 'update_order']);
 
-    Route::get('admin/order/edit/{id}',[App\Http\Controllers\HomeController::class, 'edit_order']);
-    Route::get('admin/order/edit/{id}/update',[App\Http\Controllers\HomeController::class, 'update_order']);
+
+    Route::get('admin/user/delete/{id}',[App\Http\Controllers\HomeController::class, 'delete_user']);
     Route::get('admin/user/edit/{id}',[App\Http\Controllers\HomeController::class, 'edit_user']);
     Route::get('admin/user/edit/{id}/update',[App\Http\Controllers\HomeController::class, 'update_user']);
+
+
+    Route::get('admin/question/delete/{id}',[App\Http\Controllers\QuestionController::class, 'delete_question']);
 
 
 });

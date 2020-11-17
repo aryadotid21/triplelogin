@@ -18,4 +18,10 @@ class QuestionController extends Controller
         return back()->with('success','Product successfully added.');
         
     }
+    
+    public function delete_question($id)
+    {
+        DB::table('questions')->where('id', $id)->delete();
+        return back()->with('success','Question successfully deleted.');
+    }
 }

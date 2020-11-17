@@ -7,6 +7,16 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+@font-face{
+  font-family: proxima-nova;
+  src: url(https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/l?subset_id=2&fvd=n6&v=3);
+}
+
+@font-face{
+  font-family: proxima-nova;
+  src: url(https://use.typekit.net/af/576d53/00000000000000003b9b3066/27/l?subset_id=2&fvd=n6&v=3);
+}
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -73,7 +83,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   text-align: left;
-  background-color: whitesmoke;
+  background: linear-gradient(90deg, rgba(255,219,220,1) 20%, rgba(148,187,233,1) 80%);
 }
 
 
@@ -394,6 +404,7 @@ h6,
 h1,
 .h1 {
   font-size: 2.25rem;
+  text-transform: uppercase;
 }
 
 h2,
@@ -582,7 +593,7 @@ pre code {
 .container-lg,
 .container-md,
 .container-sm {
-  width: 100%;
+  width: 95%;
   padding-right: 0px;
   padding-left: 0px;
   margin-right: auto;
@@ -619,7 +630,7 @@ pre code {
   .container-md,
   .container-sm,
   .container {
-    max-width: 95%;
+    max-width: 100%;
   }
 }
 
@@ -4472,6 +4483,7 @@ input[type=button].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  
 }
 
 .nav-link:hover,
@@ -4580,9 +4592,17 @@ input[type=button].btn-block {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1.525rem;
+  font-size: 1.2rem;
   line-height: inherit;
   white-space: nowrap;
+  font-size: 21px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1em;
 }
 
 .navbar-brand:hover,
@@ -4999,9 +5019,7 @@ input[type=button].btn-block {
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.5rem;
+  border-radius: 3rem;
 }
 
 .card > hr {
@@ -5061,8 +5079,10 @@ input[type=button].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background: linear-gradient(90deg, rgba(255,219,220,1) 20%, rgba(148,187,233,1) 80%);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size:1.4rem;
 }
 
 .card-header:first-child {
@@ -11033,7 +11053,7 @@ h3.h3 {
 .product-grid2 .product-image2 {
   overflow: hidden;
   position: relative;
-  border-radius:4%;
+  border-radius:10%;
 }
 
 .product-grid2 .product-image2 a {
@@ -11113,7 +11133,7 @@ h3.h3 {
 }
 
 .sticky-top {
-  transition: all 0.35s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 /* style for when sitcky is applied */

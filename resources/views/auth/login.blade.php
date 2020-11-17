@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="max-width:65%">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card" style="padding-bottom:20%;">
@@ -58,12 +58,12 @@
                                 </button>
                                 <a class="btn btn-secondary" href="/">Cancel</a>
 
-                                @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                                @endif
+                                
                             </div>
+                            <div class="col-md-6 offset-md-4 mt-2">
+                            <a href="{{ route('register') }}">Create an account?</a>
+
+</div>
                         </div>
                     </form>
                 </div>

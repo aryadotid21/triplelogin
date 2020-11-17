@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container" style="max-width:60%">
+    <div class="row justify-content-center" >
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -80,7 +80,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                                <a class="btn btn-secondary" href="/">Cancel</a>
+                                <a class="btn btn-secondary" href="{{ url()->previous() }}">Cancel</a>
                             </div>
                         </div>
                     </form>
