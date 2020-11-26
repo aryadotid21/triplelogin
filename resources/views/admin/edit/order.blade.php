@@ -10,7 +10,7 @@
                 <div class="card-header">Edit Order Data</div>
 
                 <div class="card-body">
-                @foreach ($orders as $data)
+                    @foreach ($orders as $data)
                     <form method="get" action="{{$data -> id}}/update">
                         @csrf
                         <div class="form-group row">
@@ -20,9 +20,9 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$data -> name}}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -34,9 +34,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$data -> email}}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{$data -> phone}}" required autocomplete="phone">
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
                             <div class="col-md-6">
@@ -108,11 +108,11 @@
                         <div class="form-group row">
                             <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
                             <div class="col-md-3">
-                            <select class="form-control" name="status">
-                                <option value="">Pending</option>
-                                <option value="On Process">On Process</option>
-                                <option value="Finished">Finished</option>
-                            </select>
+                                <select class="form-control" name="status">
+                                    <option value="">Pending</option>
+                                    <option value="On Process">On Process</option>
+                                    <option value="Finished">Finished</option>
+                                </select>
                             </div>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" value="@if (empty($data->usertype))Pending
