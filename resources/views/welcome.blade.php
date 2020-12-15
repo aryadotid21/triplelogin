@@ -26,7 +26,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body>
 
 
 
@@ -36,7 +36,7 @@
         </span>
         <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-custom ">
             <div class="container">
-                <a class="navbar-brand" href="#" onclick="myFunction()">Jakarta Laptop</a>
+                <a class="navbar-brand" style="color:#3A4664;" href="#" onclick="myFunction()">Jakarta Laptop</a>
                 @include('flash-message')
                 <a id="navbar-brand-mobile" class="navbar-brand" style="display:none" href="#">JLR</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1">
@@ -48,12 +48,6 @@
                         <!-- Authentication Links -->
                         <li class="nav-item">
                             <a class="nav-link" href="#product">Product</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#location">Location</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
                         </li>
                         @guest
                         @if (Route::has('login'))
@@ -142,47 +136,6 @@
             </div>
             @guest
             @if (Route::has('login'))
-
-            <div class="d-flex justify-content-center" style="padding-top:4rem;padding-bottom:4rem">
-                <div class="jumbotron" style="background-color:white;max-width:800px;border-radius:25px" data-aos="fade-up" data-aos-duration="2500">
-                    <h1 style="text-align:center">Got a Question?</h1>
-                    <form method="POST" action="/question" id="question">
-                        @csrf
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputCity">Name</label>
-                                <input name="name" type="text" class="form-control" id="inputCity" value="">
-                            </div>
-                        </div>
-
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputState">Email</label>
-                                <input name="email" type="email" class="form-control" id="inputState" value="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputZip">Phone Number</label>
-                                <input name="phone" type="text" class="form-control" id="inputZip" value="">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="inputAddress">Subject</label>
-                                <textarea name="subject" type="text" class="form-control" id="inputSubject" style="height:200px"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <button type="submit" class="btn btn-grad btn-lg">Ask Us</button>
-                        </div>
-                </div>
-            </div>
-            </form>
-
-            @endif
-
-            @if (Route::has('register'))
 
             <div class="d-flex justify-content-center" style="padding-top:4rem;padding-bottom:4rem">
                 <div class="jumbotron" style="background-color:white;max-width:800px;border-radius:25px" data-aos="fade-up" data-aos-duration="2500">

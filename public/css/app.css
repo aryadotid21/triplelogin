@@ -4595,7 +4595,7 @@ input[type=button].btn-block {
   font-size: 1.2rem;
   line-height: inherit;
   white-space: nowrap;
-  font-size: 21px;
+  font-size: 25px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: #fff;
@@ -11173,13 +11173,12 @@ h3.h3 {
 .fa:hover{
   opacity: 1;
   text-decoration: none;
-  border: 2px solid #3a4664;
+  border: 2px solid rgba(255, 255, 255, 0.342);
   color:#ffffff;
   border-radius: 50%;
 }
 .fa-instagram,.fa-facebook,.fa-whatsapp,.fa-envelope,.fa-youtube {
   background: #eaa0a2;
-  color: #3a4664;
 }
 
 .fa-angle-up{
