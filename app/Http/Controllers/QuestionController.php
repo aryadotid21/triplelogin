@@ -15,7 +15,7 @@ class QuestionController extends Controller
             'phone' => $data['phone'],
             'subject' => $data['subject']
         ]);
-        return back()->with('success','Product successfully added.');
+        return back()->with('success','Question successfully submitted.');
         
     }
     

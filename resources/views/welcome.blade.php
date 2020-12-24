@@ -77,6 +77,7 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -96,9 +97,13 @@
                 <div class="header" style="background-color:#3a4664" data-aos="fade-up" data-aos-duration="1000">
                     <h1 style="color:whitesmoke">Jakarta Laptop Rent</h1>
                     <p style="color:whitesmoke">Jakarta laptop rental is a company that provides laptop rentals for the Jakarta area, especially North Jakarta, East Jakarta, West Jakarta, South Jakarta, and Central Jakarta</p>
-                    <p class="lead">
+                        @guest
+                        @if (Route::has('login'))
+                        <a class="btn btn-grad btn-lg" href="#product" role="button">Learn More</a>
+                        @endif
+                        @else
                         <a class="btn btn-grad btn-lg" href="#order" role="button">Order Now</a>
-                    </p>
+                        @endguest
                 </div>
             </div>
             <div class="jumbotron" style="background-color:white;margin-bottom:2%;padding-top:7%;padding-bottom:7%" id="product">
